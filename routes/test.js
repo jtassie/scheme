@@ -1,7 +1,5 @@
-var express = require('express');
-var router = express.Router();
-
-var InstantMessageModel = require('../lib/scheme/InstantMessageModel');
+let express = require('express');
+let router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,14 +7,16 @@ router.get('/', function(req, res, next) {
   let validationResults = {};
   let validationCb = function(results){ validationResults = results;};
 
-  let im = new InstantMessageModel.Builder()
+  let imModel = req.app.get('schemeManager').getModel('IM');
+
+  let im = imModel.builder
       .withUserId('jtassie')
       .withBody(
-          new InstantMessageModel.BodyBuilder()
+          imModel.builder.builderBody
               .withText('sdfsdfsd')
               .withMessageId('123e4567-e89b-12d3-a456-426655440000')
               .withTimestamp(new Date())
-              .build(validationCb)
+              .build()
       )
       .build(validationCb);
 

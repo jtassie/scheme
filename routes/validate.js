@@ -1,11 +1,5 @@
-var express = require('express');
-var router = express.Router();
-
-var InstantMessageModel = require('../lib/scheme/InstantMessageModel');
-
-const _builderTypeMap = {
-    IM: InstantMessageModel.Builder
-};
+let express = require('express');
+let router = express.Router();
 
 router.post('/', function(req, res, next) {
 
@@ -15,8 +9,13 @@ router.post('/', function(req, res, next) {
         res.send('failed to send \'type\' property identifying the message type.');
         return;
     }
+    let schemeManager = req.app.get('schemeManager');
+    if (!schemeManager.hasScheme(type)){
+        res.send('did not resolve \'type\' property to a known message format.');
+        return;
+    }
 
-    let builder = _builderTypeMap[type];
+    let builder = schemeManager.getModel(type).builder;
     if (!builder){
         res.send('did not resolve \'type\' property to a known message format.')
         return;
