@@ -1,15 +1,11 @@
 {
-  "name": "scheme",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
+  "name": "scheme-jtassie",
+  "version": "1.0.1",
+  "author": {
+    "name": "Jonah Tassie",
+    "email": "j.tassie@gmail DOT com"
   },
   "dependencies": {
-    "camelcase": "^5.0.0",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "morgan": "~1.9.0"
+    "camelcase": "^5.0.0"
   }
 }
