@@ -1,0 +1,36 @@
+{
+  "$id": "https://github.com/jtassie/scheme/public/schemes/im.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Instant Messaging Contract",
+  "description": "A JSON schema contract confining the Instant Messaging Event",
+  "required": [ "type", "userID", "body" ],
+  "type": "object",
+  "properties": {
+    "type": {
+      "description": "The field identifying this message as an Instant Message Event",
+      "enum": ["IM"]
+    },
+    "userID": {
+      "type": "string",
+      "description": "ID of the User receiving the message"
+    },
+    "body": {
+      "type": "object",
+      "required": [ "text", "messageID", "timestamp" ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The text in the message"
+        },
+        "messageID": {
+          "type": "uuid",
+          "description": "unique ID of the message"
+        },
+        "timestamp": {
+          "type": "timestamp",
+          "description": "ISO8601 timestamp"
+        }
+      }
+    }
+  }
+}
