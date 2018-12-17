@@ -51,6 +51,14 @@ let im = imModel.builder
 let validationResults = imModel.builder.validateModel(im);
 ```
 
+## Tests
+
+Tests can be run via the command:
+
+```
+$ npm test
+```
+
 ## License
 
 MIT © [Jonah Tassie](https://github.com/jtassie/scheme-jtassie)
